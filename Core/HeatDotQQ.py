@@ -52,3 +52,23 @@ class HeatDotQQ:
         else:
             print(response.status_code)
             return None
+    def getAllMallSourceNumByCity(self,adcode,date):
+        '竞争环境-商场人气热度-客流人数排行'
+        params={'start':0,'end':100,'date':date,'adcode':adcode}
+        response=self._session.get('https://heat.qq.com/mall/inner_api/getAllMallSourceNumByCity.php',params=params)
+        if response.status_code==200:
+            json_response=response.json()
+            return json_response
+        else:
+            print(response.status_code)
+            return None
+    def getMallRankingListCompetitive(self,adcode,date):
+        '竞争环境-商场人气热度-客流人次排行'
+        params={'start':0,'end':100,'date':date,'adcode':adcode,'property':2,'type':301,'subtype':1}
+        response=self._session.get('https://heat.qq.com/mall/inner_api/getMallRankingListCompetitive.php',params=params)
+        if response.status_code==200:
+            json_response=response.json()
+            return json_response
+        else:
+            print(response.status_code)
+            return None
